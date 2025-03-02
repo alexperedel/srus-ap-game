@@ -66,6 +66,33 @@ class PlayerList:
         else:
             self._head = None
             self._tail = None
+
+    def delete_by_key(self, key):
+        if self.is_empty():
+            raise DeletionFromEmptyList()
+
+        current_node = self._head
+
+        while current_node is not None:
+            if str(current_node.key) == str(key):
+                if current_node.previous is None and current_node.next is None:
+                    self._head = None
+                    self._tail = None
+                elif current_node.previous is None:
+                    self.delete_head()
+                elif current_node.next is None:
+                    self.delete_tail()
+                else:
+                    next_node = current_node.next
+                    previous_node = current_node.previous
+                    previous_node.next = next_node
+                    next_node.previous = previous_node
+                return
+            else:
+                current_node = current_node.next
+        else:
+            return f"No item with key: {key} was found"
+
             
 
 
