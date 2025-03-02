@@ -1,4 +1,5 @@
-from player_node import PlayerNode
+from app.player_node import PlayerNode
+
 
 class PlayerList:
     def __init__(self):
@@ -21,10 +22,14 @@ class PlayerList:
 
     def append(self, player):
         if self.is_empty():
-            self._head, self._tail = PlayerNode(player)
-
+            node = PlayerNode(player)
+            self._head = node
+            self._tail = node
         else:
             player_node = PlayerNode(player)
+            player_node.next = self._head
+            self.head.previous = player_node
+            self._head = player_node
             
 
 
