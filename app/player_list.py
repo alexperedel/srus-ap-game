@@ -93,6 +93,19 @@ class PlayerList:
         else:
             return f"No item with key: {key} was found"
 
-            
+    def display(self, forward=True):
+        if self.is_empty():
+            print("List is Empty!")
+            return
 
+        if forward:
+            current_node = self._head
+            while current_node is not None:
+                print(str(current_node))
+                current_node = current_node.next
+        else:
+            current_node = self._tail
+            while current_node is not None:
+                print(current_node)
+                current_node = current_node.previous
 

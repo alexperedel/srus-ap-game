@@ -181,5 +181,3 @@ class TestPlayerList(unittest.TestCase):
         result = player_list.delete_by_key(key)
 
         self.assertEqual(result, f"No item with key: {key} was found")
-
-
