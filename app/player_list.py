@@ -1,4 +1,5 @@
 from app.player_node import PlayerNode
+from app.exceptions import DeletionFromEmptyList
 
 
 class PlayerList:
@@ -41,6 +42,30 @@ class PlayerList:
             player_node.previous = self._tail
             self.tail.next = player_node
             self._tail = player_node
+
+    def delete_head(self):
+        if self.is_empty():
+            raise DeletionFromEmptyList()
+
+        if self._head.next is not None:
+            next_node = self._head.next
+            next_node.previous = None
+            self._head = next_node
+        else:
+            self._head = None
+            self._tail = None
+
+    def delete_tail(self):
+        if self.is_empty():
+            raise DeletionFromEmptyList()
+
+        if self._tail.previous is not None:
+            previous_node = self._tail.previous
+            previous_node.next = None
+            self._tail = previous_node
+        else:
+            self._head = None
+            self._tail = None
             
 
 
