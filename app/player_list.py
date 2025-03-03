@@ -3,6 +3,12 @@ from app.exceptions import DeletionFromEmptyList
 
 
 class PlayerList:
+
+    """A linked list-like structure to manage players.
+
+    This class maintains a head and tail reference for managing a list of players.
+    """
+
     def __init__(self):
         self._head = None
         self._tail = None
@@ -26,6 +32,13 @@ class PlayerList:
         self._tail = node
 
     def append_left(self, player):
+
+        """Adds a player to the beginning (head) of the list.
+
+        Args:
+            player (object): The player object to be added.
+        """
+
         if self.is_empty():
             self._add_first_node(PlayerNode(player))
         else:
@@ -35,6 +48,13 @@ class PlayerList:
             self._head = player_node
 
     def append_right(self, player):
+
+        """Adds a player to the end (tail) of the list.
+
+        Args:
+            player (object): The player object to be added.
+        """
+
         if self.is_empty():
             self._add_first_node(PlayerNode(player))
         else:
@@ -44,6 +64,13 @@ class PlayerList:
             self._tail = player_node
 
     def delete_head(self):
+
+        """Removes the first player from the list.
+
+        Raises:
+            DeletionFromEmptyList: If the list is empty.
+        """
+
         if self.is_empty():
             raise DeletionFromEmptyList()
 
@@ -56,6 +83,13 @@ class PlayerList:
             self._tail = None
 
     def delete_tail(self):
+
+        """Removes the last player from the list.
+
+        Raises:
+            DeletionFromEmptyList: If the list is empty.
+        """
+
         if self.is_empty():
             raise DeletionFromEmptyList()
 
@@ -68,6 +102,19 @@ class PlayerList:
             self._tail = None
 
     def delete_by_key(self, key):
+
+        """Deletes a player from the list based on a given key.
+
+        Args:
+            key (str or int): The key identifying the player to be removed.
+
+        Raises:
+            DeletionFromEmptyList: If the list is empty.
+
+        Returns:
+            str: A message if the key is not found.
+        """
+
         if self.is_empty():
             raise DeletionFromEmptyList()
 
@@ -94,6 +141,14 @@ class PlayerList:
             return f"No item with key: {key} was found"
 
     def display(self, forward=True):
+
+        """Displays the list of players in forward or backward order.
+
+            Args:
+                forward (bool, optional): If True, displays from head to tail;
+                                          if False, displays from tail to head. Defaults to True.
+            """
+
         if self.is_empty():
             print("List is Empty!")
             return

@@ -1,4 +1,6 @@
 class Player:
+    """Represents a player with a unique ID and name."""
+
     def __init__(self, unique_id: str, player_name: str):
         self._unique_id = unique_id
         self._player_name = player_name

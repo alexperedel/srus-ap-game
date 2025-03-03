@@ -1,4 +1,6 @@
 class PlayerNode:
+    """Represents a node in a doubly linked list containing a Player object."""
+
     def __init__(self, player):
         self._player = player
         self._next = None
