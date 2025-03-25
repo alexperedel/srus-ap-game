@@ -147,7 +147,7 @@ class PlayerList:
             Args:
                 forward (bool, optional): If True, displays from head to tail;
                                           if False, displays from tail to head. Defaults to True.
-            """
+        """
 
         if self.is_empty():
             print("List is Empty!")
