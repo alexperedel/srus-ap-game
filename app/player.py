@@ -6,16 +6,22 @@ class Player:
         self._player_name = player_name
 
     def __eq__(self, other):
-        if isinstance(other, Player) and self.uid == other.uid and self.name == other.name:
+        if isinstance(other, Player) and self.uid == other.uid:
             return True
         return False
 
     @classmethod
-    def hash(cls):
-        ...
+    def mid_square_hashing(cls, key: str) -> int:
+        min_extraction_size = 5
+        if len(key) >= min_extraction_size:
+            middle = len(key)//2
+            middle_digits = int(key[middle-1:middle+2])
+            return middle_digits ** 2
+        else:
+            return int(key) ** 2
 
     def __hash__(self):
-        return hash((self.uid, self.name))
+        return self.mid_square_hashing(self.uid)
 
     @property
     def uid(self):

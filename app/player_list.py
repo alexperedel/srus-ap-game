@@ -24,7 +24,6 @@ class PlayerList:
     def is_empty(self):
         if self._head is None:
             return True
-
         return False
 
     def _add_first_node(self, node):
@@ -139,6 +138,20 @@ class PlayerList:
                 current_node = current_node.next
         else:
             return f"No item with key: {key} was found"
+
+    def find_by_key(self, key):
+        if self.is_empty():
+            raise DeletionFromEmptyList()
+
+        current_node = self._head
+
+        while current_node is not None:
+            if str(current_node.key) == str(key):
+                return current_node
+            else:
+                current_node = current_node.next
+        else:
+            return False
 
     def display(self, forward=True):
 
