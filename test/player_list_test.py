@@ -181,3 +181,35 @@ class TestPlayerList(unittest.TestCase):
         result = player_list.delete_by_key(key)
 
         self.assertEqual(result, f"No item with key: {key} was found")
+
+    def test_successfully_find_item_by_key_with_existent_key(self):
+        player = Player("20000", "John")
+        key = "20000"
+        player_list = PlayerList()
+        player_list.append_right(player)
+        result = player_list.find_by_key(key)
+
+        self.assertEqual(result, player)
+
+    def test_successfully_find_item_by_key_with_non_existent_key(self):
+        player = Player("20000", "John")
+        key = "40000"
+        player_list = PlayerList()
+        player_list.append_right(player)
+        result = player_list.find_by_key(key)
+
+        self.assertFalse(result)
+
+    def test_successfully_get_len_of_list(self):
+        player = Player("20000", "John")
+        player_1 = Player("50000", "Tom")
+        player_2 = Player("80000", "Julia")
+
+        player_list = PlayerList()
+        player_list.append_right(player)
+        player_list.append_right(player_1)
+        player_list.append_right(player_2)
+
+        length = len(player_list)
+
+        self.assertEqual(length, 3)

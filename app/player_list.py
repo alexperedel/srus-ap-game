@@ -13,6 +13,18 @@ class PlayerList:
         self._head = None
         self._tail = None
 
+    def __len__(self) -> int:
+        if self.is_empty():
+            return 0
+
+        current_node = self._head
+        counter = 0
+
+        while current_node is not None:
+            current_node = current_node.next
+            counter += 1
+        return counter
+
     @property
     def head(self):
         return self._head
@@ -147,7 +159,7 @@ class PlayerList:
 
         while current_node is not None:
             if str(current_node.key) == str(key):
-                return current_node
+                return current_node.player
             else:
                 current_node = current_node.next
         else:

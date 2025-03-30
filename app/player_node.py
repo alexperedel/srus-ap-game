@@ -33,4 +33,4 @@ class PlayerNode:
     def __str__(self):
         next_id = self.next.key if self.next else "None"
         previous_id = self.previous.key if self.previous else "None"
-        return f"Player id: {self.key}, next {next_id}, previous {previous_id}"
+        return f"Player id: {self.key}, Player name: {self.player.name}, next {next_id}, previous {previous_id}"

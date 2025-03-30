@@ -13,12 +13,13 @@ class Player:
     @classmethod
     def mid_square_hashing(cls, key: str) -> int:
         min_extraction_size = 5
-        if len(key) >= min_extraction_size:
-            middle = len(key)//2
-            middle_digits = int(key[middle-1:middle+2])
-            return middle_digits ** 2
+        squared_key = str(int(key) ** 2)
+        if len(squared_key) >= min_extraction_size:
+            middle = len(squared_key)//2
+            middle_digits = squared_key[middle-1:middle+2]
+            return int(middle_digits)
         else:
-            return int(key) ** 2
+            return int(squared_key)
 
     def __hash__(self):
         return self.mid_square_hashing(self.uid)
@@ -31,6 +32,9 @@ class Player:
     def name(self):
         return self._player_name
 
+    @name.setter
+    def name(self, name):
+        self._player_name = name
 
     def __str__(self):
         return f"Player {self._player_name} (ID: {self._unique_id})"
