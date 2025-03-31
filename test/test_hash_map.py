@@ -92,7 +92,7 @@ class TestPlayerHashMap(unittest.TestCase):
 
         self.assertEqual(result, 2)
 
-    def test__delete_item_empty_table(self):
+    def test_delete_item_empty_table(self):
         player_hash_map = PlayerHashMap()
 
         del player_hash_map["10000"]
@@ -101,7 +101,7 @@ class TestPlayerHashMap(unittest.TestCase):
 
         self.assertEqual(result, 0)
 
-    def test__delete_non_existent_item(self):
+    def test_delete_non_existent_item(self):
         player_hash_map = PlayerHashMap()
 
         player = Player("20000", "John")
